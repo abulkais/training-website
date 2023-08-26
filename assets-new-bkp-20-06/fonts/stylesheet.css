@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Electrolux Sans';
+    src: url('ElectroluxSans-Bold.woff2') format('woff2'),
+        url('ElectroluxSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Electrolux Sans';
+    src: url('ElectroluxSans-SemiBold.woff2') format('woff2'),
+        url('ElectroluxSans-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Electrolux Sans';
+    src: url('ElectroluxSans-Light.woff2') format('woff2'),
+        url('ElectroluxSans-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Electrolux Sans';
+    src: url('ElectroluxSans-Regular.woff2') format('woff2'),
+        url('ElectroluxSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Electrolux Sans';
+    src: url('ElectroluxSans-Thin.woff2') format('woff2'),
+        url('ElectroluxSans-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+

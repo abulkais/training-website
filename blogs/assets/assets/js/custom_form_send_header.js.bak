@@ -1,0 +1,220 @@
+window.onload = generateCaptcha;
+var captcha;
+function generateCaptcha() { 
+    var a = Math.floor((Math.random() * 10));
+    var b = Math.floor((Math.random() * 10));
+    var c = Math.floor((Math.random() * 10));
+    var d = Math.floor((Math.random() * 10));
+    captcha=a.toString()+b.toString()+c.toString()+d.toString();
+    document.getElementById("captcha_book_now1").value = captcha;
+    document.getElementById("captcha_book_now").value = captcha;
+
+  
+}
+
+
+
+$('#submit_query_form_header_mobile').submit(function(event) { 
+       
+var full_name_header = document.getElementById('full_name_header').value;
+var contact_no_header = document.getElementById('contact_no_header').value;
+
+var location_book_now_form = document.getElementById('location_book_now_form').value;
+
+var location_book_now_form_selector = document.getElementById('location_book_now_form');
+var location_book_now_form = location_book_now_form_selector[location_book_now_form_selector.selectedIndex].text;
+
+var email_form_book_now = document.getElementById('email_form_book_now').value;
+var message_form_book_now = document.getElementById('message_form_book_now').value;
+var hidden_book_now_form_title = "Enquiry Details from Mobile";
+
+var inputcaptcha_book_now = document.getElementById("inputText_book_now").value;
+if(inputcaptcha_book_now !=captcha){
+generateCaptcha();
+document.getElementById('show_captcha_error').innerHTML = "<p style='color:red; padding-left:10px;   font-size: 13px;font-family: lato;'> Captcha doesn't match, please try again!! </p>";
+        event.preventDefault();
+    }
+    else{
+var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) { 
+console.log(this.responseText);
+               var str_rsponse = this.responseText;
+               var new_string = str_rsponse.trim();
+  if(    new_string == 1 ){
+                 document.getElementById('show_captcha_error').innerHTML = "<p style='color:green;font-size:12px; padding-left:10px;'> Thank you for your enquiry. A member of our team will be in touch as soon as possible.</p>";
+var form_reset = document.getElementById('submit_query_form_header_mobile');
+form_reset.reset();
+
+setTimeout(function(){ 
+
+document.getElementById('show_captcha_error').innerHTML = "";
+
+
+ }, 2000);
+
+
+              }
+              else if( new_string  == 0 ){ 
+                 document.getElementById('show_captcha_error').innerHTML = "<p style='color:red;font-size:12px;padding-left:10px;'> Your message couldn't be sent.</p>";
+
+
+
+
+              }
+                 
+            }else  {  }
+        };
+        xmlhttp.open('POST', 'backend/sendbooknowmailfrommob.php?a='+full_name_header+'&b='+contact_no_header+'&c='+location_book_now_form+'&d='+email_form_book_now+'&e='+message_form_book_now+'&f='+hidden_book_now_form_title, true);
+        xmlhttp.send();
+    }
+
+
+
+
+
+         event.preventDefault();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ $('#submit_query_form_header').submit(function(event) { 
+       
+var full_name_header = document.getElementById('full_name_header1').value;
+var contact_no_header = document.getElementById('contact_no_header1').value;
+
+var location_book_now_form = document.getElementById('location_book_now_form1').value;
+
+var location_book_now_form_selector = document.getElementById('location_book_now_form1');
+var location_book_now_form = location_book_now_form_selector[location_book_now_form_selector.selectedIndex].text;
+
+var email_form_book_now = document.getElementById('email_form_book_now1').value;
+var message_form_book_now = document.getElementById('message_form_book_now1').value;
+var current_header_form = localStorage.getItem('form_header');
+
+if(current_header_form == 1 ) {var hidden_book_now_form_title = "Enquiry Details from Scholarship Fest"; }
+else if(current_header_form == 2 ) {var hidden_book_now_form_title = "Enquiry for diploma programme"; }
+else if(current_header_form == 3 ) {var hidden_book_now_form_title = "Enquiry for 50% off for scholarship"; }
+else if(current_header_form == 4 ) {var hidden_book_now_form_title = "Enquiry for corporate/group training"; }
+//var hidden_book_now_form_title = document.getElementById('hidden_book_now_form_title').value;
+var inputcaptcha_book_now = document.getElementById("inputText_book_now1").value;
+if(inputcaptcha_book_now !=captcha){
+generateCaptcha();
+document.getElementById('show_captcha_error1').innerHTML = "<p style='color:red; padding-left:10px;   font-size: 13px;font-family: lato;'> Captcha doesn't match, please try again!! </p>";
+        event.preventDefault();
+    }
+    else{
+var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) { 
+console.log(this.responseText);
+               var str_rsponse = this.responseText;
+               var new_string = str_rsponse.trim();
+  if(    new_string == 1 ){
+                 document.getElementById('show_captcha_error1').innerHTML = "<p style='color:green;font-size:12px; padding-left:10px;'> Thank you for your enquiry. A member of our team will be in touch as soon as possible.</p>";
+var form_reset = document.getElementById('submit_query_form_header');
+form_reset.reset();
+
+setTimeout(function(){ 
+
+document.getElementById('show_captcha_error1').innerHTML = "";
+var x  = document.getElementById("show-book-now-pop-up-main"); 
+    x.close();
+
+ }, 2000);
+              }
+              else if( new_string  == 0 ){ 
+                 document.getElementById('show_captcha_error1').innerHTML = "<p style='color:red;font-size:12px;padding-left:10px;'> Your message couldn't be sent.</p>";
+
+
+
+
+              }
+                 
+            }else  {  }
+        };
+        xmlhttp.open('POST', 'backend/sendbooknowmail.php?a='+full_name_header+'&b='+contact_no_header+'&c='+location_book_now_form+'&d='+email_form_book_now+'&e='+message_form_book_now+'&f='+hidden_book_now_form_title, true);
+        xmlhttp.send();
+    }
+
+
+
+
+
+         event.preventDefault();
+    });
+
+
+
+
+
+
+
+
+function sendCallBackForm()
+{
+
+ 
+
+       
+var call_back_name= document.getElementById('call_back_name').value;
+var call_back_number= document.getElementById('call_back_number').value;
+var call_back_time= document.getElementById('call_back_time').value;
+
+
+var call_back_form_title = "Call Back Enquiry";
+
+
+if(call_back_name == '' || call_back_number == '' ||  call_back_time == '' || call_back_number.length <10 ){
+
+//document.getElementById('show_callback_error').innerHTML = "<p style='color:red; padding-left:10px;   font-size: 11px;font-family: lato;'> Please fill required fields!! </p>";
+        return false;
+    }
+    else{
+var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) { 
+console.log(this.responseText);
+               var str_rsponse = this.responseText;
+               var new_string = str_rsponse.trim();
+  if(    new_string == 1 ){
+                 document.getElementById('show_callback_error').innerHTML = "<p style='color:green;font-size:11px; padding-left:0px;'> Thanks for submission..!! A member of our team will contact you as per your preferable time.</p>";
+
+
+              }
+              else if( new_string  == 0 ){ 
+                 document.getElementById('show_callback_error').innerHTML = "<p style='color:red;font-size:11px;padding-left:0px;'> Your message couldn't be sent.</p>";
+
+
+
+
+              }
+                 
+            }else  {  }
+        };
+        xmlhttp.open('POST', 'backend/sendcallbackform.php?a='+call_back_name+'&b='+call_back_number+'&c='+call_back_time+'&d='+call_back_form_title, true);
+        xmlhttp.send();
+    }
+
+}

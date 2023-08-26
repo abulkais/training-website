@@ -1,0 +1,25 @@
+#show-book-now-pop-up-main { position: fixed;  }
+ .fixed-mobile-menu-bottom { padding-left: 10px;   position: fixed;bottom: 0;  min-height:54px;   background: transparent; z-index: 9998;     width: 100%; }
+}
+.fixed-mobile-menu-bottom .col-xs-4 {    margin-top: 3.6%;  }
+.fixed-mobile-menu-bottom .col-xs-4 img {     width: 108px;  }
+
+ .fixed-web-menu-bottom {       padding-left: 10px;   position: fixed;bottom: 0;  min-height:30px;       background: #333; z-index: 9998;     width: 100%; }
+.fixed-web-menu-bottom .col-xs-4 {    margin-top: 0;  }
+
+.fixed-web-menu-bottom ul { display:inline-flex;     background: #333;  margin-left: 35px;       width: 100%; list-style:none;    margin-bottom: 0px; }
+.fixed-web-menu-bottom ul li {    width: 19%;}
+.fixed-web-menu-bottom ul li a {     font-size: 16px;font-weight: 600;   }
+.fixed-web-menu-bottom ul li a i {margin-right: 7px;}
+.fixed-web-menu-bottom ul li a:hover,.fixed-web-menu-bottom ul li a:focus,.fixed-web-menu-bottom ul li a:active{ text-decoration:none; color:#D7F0D8 !important;  }
+
+.fixed-web-menu-bottom ul li:nth-child(1) {      margin-top: 2px; }
+.fixed-web-menu-bottom ul li:nth-child(1) a{ color:#fff; background: #287f28; padding-left: 20px; padding-right: 20px;      padding: 7px;  box-shadow: 2px -2px 6px rgba(0, 0, 0, 0.65); }
+.fixed-web-menu-bottom ul li:nth-child(2) a {   color:#fff; }
+.fixed-web-menu-bottom ul li:nth-child(2) a i{ color:#fff;      font-size: 16px;    padding: 7px;   background: #4e4646;   } 
+.fixed-web-menu-bottom ul li:nth-child(3) a {  color:#fff;  }
+.fixed-web-menu-bottom ul li:nth-child(3) a i{ color:#fff;      margin-right: 4px;   font-size: 16px;    padding: 7px;   background: #4e4646;   } 
+.fixed-web-menu-bottom ul li:nth-child(4) a {  color:#fff;  }
+.fixed-web-menu-bottom ul li:nth-child(4) a i{ color:#fff;      margin-right: 4px;   font-size: 16px;    padding: 7px;   background: #4e4646;   } 
+.fixed-web-menu-bottom .padding-left-right-20{  padding-left:20px; padding-right:20px; }
+.flex-layout-footer {  display:flex !important; }

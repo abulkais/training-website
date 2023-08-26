@@ -1,0 +1,167 @@
+ $( function() {
+    $( "#st_startdate" ).datepicker({maxDate:"Now", dateFormat:"d-MM-yy"});
+    $( "#st_enddate" ).datepicker({dateFormat:"d-MM-yy"});
+
+  } );
+ 
+      function validateForm() {
+    var name = document.forms["myForm"]["st_fullname"].value;
+    if (name == "") {
+        alert("Name must be filled out");
+        event.preventDefault();
+        return false;
+    }
+
+    var college = document.forms["myForm"]["st_college"].value;
+    if (college == "") {
+        alert("College Name must be filled out");
+        event.preventDefault();
+        return false;
+    }
+    var qualification = document.forms["myForm"]["st_qualification"].value;
+    if (qualification == "") {
+        alert("Qualification must be filled out");
+        event.preventDefault();
+        return false;
+    }
+    var tech = document.forms["myForm"]["st_tech"].value;
+    if (tech == "") {
+        alert("Technology must be filled out");
+        event.preventDefault();
+        return false;
+    }
+    var stdate = document.forms["myForm"]["st_startdate"].value;
+    if (stdate == "") {
+        alert("start date must be filled out");
+        event.preventDefault();
+        return false;
+    }
+    var enddate = document.forms["myForm"]["st_enddate"].value;
+    if (enddate == "") {
+        alert("end date must be filled out");
+        event.preventDefault();
+        return false;
+    }
+    var proj = document.forms["myForm"]["st_project"].value;
+    if (proj == "") {
+        alert("Project Name must be filled out");
+        event.preventDefault();
+        return false;
+    }
+    var duration = document.forms["myForm"]["st_duration"].value;
+    if (duration == "") {
+        alert("Course Duration must be filled out");
+        event.preventDefault();
+        return false;
+    }
+    var fees = document.forms["myForm"]["st_fees"].value;
+    if (/^\d/.test(fees)) {
+        
+        //ok 
+    }else{alert("fees must be in digits.");
+        event.preventDefault();
+        return false;}
+    var city = document.forms["myForm"]["st_city"].value;
+    if (city == "") {
+        alert("Center Name must be filled out");
+        event.preventDefault();
+        return false;
+    }
+    var email1 = document.forms["myForm"]["st_email"].value;
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email1)) {
+        
+    }
+    else{
+        alert("Email must be filled out or in proper format.");
+        event.preventDefault();
+        return false;
+    }
+    var contact1 = document.forms["myForm"]["st_contact"].value;
+    if (/^\d{10}$/.test(contact1)) {
+        
+    }
+    else{
+        alert("Contact Number must 10 digits.");
+        event.preventDefault();
+        return false;
+    }
+    var enrol = document.forms["myForm"]["st_eno"].value;
+    if (enrol == "") {
+        alert("Enrollment no must be filled out");
+        event.preventDefault();
+        return false;
+    }
+
+}
+function isNumber(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        return false;
+    }
+    return true;
+}
+//********************
+// Captcha Script
+
+    //alert(window.location.href);
+	
+
+function checkform(theform) {
+    var why = "";
+
+    if (theform.CaptchaInput.value == "") {
+        why += "- Please Enter CAPTCHA Code.\n";
+    }
+    if (theform.CaptchaInput.value != "") {
+        if (ValidCaptcha(theform.CaptchaInput.value) == false) {
+            why += "- The CAPTCHA Code Does Not Match.\n";
+        }
+    }
+    if (why != "") {
+        alert(why);
+        event.preventDefault();
+        return false;
+    }
+}
+
+var a = Math.ceil(Math.random() * 9) + '';
+var b = Math.ceil(Math.random() * 9) + '';
+var c = Math.ceil(Math.random() * 9) + '';
+var d = Math.ceil(Math.random() * 9) + '';
+var e = Math.ceil(Math.random() * 9) + '';
+
+var code = a + b + c + d + e;
+document.getElementById("txtCaptcha").value = code;
+document.getElementById("CaptchaDiv").innerHTML = code;
+
+// Validate input against the generated number
+function ValidCaptcha() {
+    var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
+    var str2 = removeSpaces(document.getElementById('CaptchaInput').value);
+    if (str1 == str2) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Remove the spaces from the entered and generated code
+function removeSpaces(string) {
+    return string.split(' ').join('');
+}
+
+    function validateForm1(this) {
+    var isFormValid = true;
+    isFormValid &= validateForm();
+    isFormValid &= checkform(this);
+    
+    return isFormValid? true:false;
+}
+//*********
+    document.addEventListener('DOMContentLoaded',function(){
+ document.getElementById('contact_form').addEventListener('submit',function(){
+   document.getElementById('btn-submit').style.display='none';
+   document.getElementById('my-loader').style.display='inline';
+ },false);    
+},false);

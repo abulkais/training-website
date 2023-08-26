@@ -1,0 +1,133 @@
+.slick-next,
+.slick-prev {
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  top: 100%;
+  display: block;
+  padding: 0;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  cursor: pointer;
+  color: transparent;
+  border: none;
+  outline: 0;
+  width: 32px;
+  height: 26px;
+  transition: all 0.4s ease-in-out;
+}
+.slick-prev {
+  left: 46%;
+  z-index: 9;
+  margin-top: 0;
+}
+.slick-next {
+  right: 46%;
+  z-index: 9;
+  margin-top: 0;
+}
+.slick-dotted.slick-slider {
+  margin-bottom: 30px;
+}
+.slick-dots {
+  position: absolute;
+  bottom: 0;
+  display: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+.slick-dots li {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 4px;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer;
+}
+.slick-dots li button {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 50px;
+  height: 4px;
+  padding: 5px;
+  cursor: pointer;
+  color: transparent;
+  border: 0;
+  outline: 0;
+  background: 0 0;
+}
+.slick-dots li button:focus,
+.slick-dots li button:hover {
+  outline: 0;
+}
+.slick-dots li button:focus:before,
+.slick-dots li button:hover:before {
+  opacity: 1;
+}
+.slick-dots li button:before {
+  font-family: slick;
+  font-size: 6px;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 3px;
+  content: "";
+  text-align: center;
+  opacity: 0.4;
+  color: #000;
+  background: #cd2323;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+}
+.slick-next,
+.slick-prev {
+  top: auto;
+  bottom: 0;
+  border: 1px solid #2c1c15;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  background: 0 0;
+  color: #2c1c15;
+}
+.slick-next:hover,
+.slick-prev:hover {
+  color: #2a56ad;
+  border-color: #2a56ad;
+}
+.slick-prev {
+  left: 50%;
+  margin-left: -30px;
+}
+.slick-next {
+  right: 50%;
+  margin-right: -30px;
+}
+.slick-next::before,
+.slick-prev::before {
+  font-family: FontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  font-size: 20px;
+  line-height: 22px;
+}
+.slick-prev::before {
+  content: "\f104";
+}
+.slick-next::before {
+  content: "\f105";
+}

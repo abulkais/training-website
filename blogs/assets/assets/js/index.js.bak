@@ -1,0 +1,298 @@
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+ fbq('init', '268171933576802'); 
+fbq('track', 'PageView');
+
+
+
+
+
+
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 27) {
+         document.getElementById('searchboxcourses').style.display= "none";
+ document.getElementById('course_name').value= "";
+        
+    }
+};
+
+function removeifenteredblank() {  document.getElementById('searchboxcourses').innerHTML ="";  
+document.getElementById('searchboxcourses').style.display= "none";
+  }
+
+
+function searchCourseKeyPress(evt)
+{
+$('#searchboxcourses').html('');
+  var courseval = document.getElementById('course_name').value;
+  if(courseval != ''){ 
+
+
+var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) { 
+              console.log(this.responseText);
+                if(this.responseText == "No result found") 
+                {   
+
+  document.getElementById('searchboxcourses').style.height= "33px"; 
+document.getElementById('searchboxcourses').style.overflow= "hidden";
+document.getElementById('searchboxcourses').style.display= "block"; 
+
+
+                   document.getElementById('searchboxcourses').innerHTML= "<ul> <li style='color:red;'> "+this.responseText +"</li></ul>";  }
+              else { 
+//console.log(this.responseText);
+
+
+var json_res = JSON.parse(this.responseText);
+//console.log(json_res);
+
+document.getElementById('searchboxcourses').innerHTML ="";
+for(var i =0;i<(json_res.length);i++)
+{
+
+console.log(json_res);
+
+$('#searchboxcourses').append("<ul> <li> <a href="+json_res[i].link+">"+ json_res[i].name+"</a> </li></ul>");
+
+//document.getElementById('searchboxcourses').innerHTML += "<ul> <li> <a href="+json_res[i].link+">"+ json_res[i].name+"</a> </li></ul>";
+}
+document.getElementById('searchboxcourses').style.display= "block";
+ //document.getElementById("searchboxcourses").innerHTML += "<ul> <li> <a href="+this.responseText +">"+this.responseText +"</a></li></ul>";
+document.getElementById('searchboxcourses').style.height= "155px"; 
+document.getElementById('searchboxcourses').style.overflow= "scroll";
+                   
+
+                      }
+            //   var str_rsponse = this.responseText;
+              // var new_string = str_rsponse.trim();
+           
+}
+        
+            else  {   }
+        };
+
+        xmlhttp.open('GET', 'backend/searhcourses.php?courseval='+courseval, true);
+        xmlhttp.send();
+
+ }
+else {   document.getElementById('searchboxcourses').innerHTML ="";  
+document.getElementById('searchboxcourses').style.display= "none";  }
+
+}
+
+
+function enterPressed(evt)
+{
+  var courseval = document.getElementById('course_name').value;
+
+
+
+
+var charCode = (evt.which) ? evt.which : event.keyCode;
+
+if(courseval.length == 0) { removeifenteredblank();  }
+
+if ((charCode == 13) && courseval == '') {     removeifenteredblank(); }
+else  if ((charCode == 13) && courseval != '')
+{
+
+if(document.getElementById('searchboxcourses').text != ''){document.getElementById('searchboxcourses').innerHTML ="";}
+    
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) { 
+              console.log(this.responseText);
+                if(this.responseText == "No result found") 
+                {   
+
+  document.getElementById('searchboxcourses').style.height= "33px"; 
+document.getElementById('searchboxcourses').style.overflow= "hidden";
+document.getElementById('searchboxcourses').style.display= "block"; 
+
+
+                   document.getElementById('searchboxcourses').innerHTML= "<ul> <li style='color:red;'> "+this.responseText +"</li></ul>";  }
+              else { 
+console.log(this.responseText);
+
+
+var json_res = JSON.parse(this.responseText);
+//console.log(json_res);
+
+document.getElementById('searchboxcourses').innerHTML ="";
+for(var i =0;i<(json_res.length);i++)
+{
+
+console.log(json_res);
+
+
+document.getElementById('searchboxcourses').innerHTML += "<ul> <li> <a href="+json_res[i].link+">"+ json_res[i].name+"</a> </li></ul>";
+}
+document.getElementById('searchboxcourses').style.display= "block";
+ //document.getElementById("searchboxcourses").innerHTML += "<ul> <li> <a href="+this.responseText +">"+this.responseText +"</a></li></ul>";
+document.getElementById('searchboxcourses').style.height= "155px"; 
+document.getElementById('searchboxcourses').style.overflow= "scroll";
+                   
+
+                      }
+            //   var str_rsponse = this.responseText;
+              // var new_string = str_rsponse.trim();
+           
+}
+        
+            else  {   }
+        };
+
+        xmlhttp.open('GET', 'backend/searhcourses.php?courseval='+courseval, true);
+        xmlhttp.send();
+
+
+
+
+
+}
+}
+
+
+$('#searchboxcourses').html('');
+
+
+function onFocuesDiv()
+{  var courseval = document.getElementById('course_name').value; 
+if(courseval == '' || courseval == null) { 
+document.getElementById('searchboxcourses').innerHTML ="";
+document.getElementById('searchboxcourses').style.display= "none"; }
+}
+function removeDivSearch(){
+document.getElementById('searchboxcourses').style.display= "none";
+document.getElementById('searchboxcourses').innerHTML= "";
+}
+                   $('#searchboxcourses').html('');
+function findcourse()
+{
+if(document.getElementById('searchboxcourses').text != '')  {  document.getElementById('searchboxcourses').innerHTML ="";  }
+  var courseval = document.getElementById('course_name').value;
+
+        
+      var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) { 
+              console.log(this.responseText);
+                if(this.responseText == "No result found") 
+                { 
+removeDivSearch();
+ document.getElementById('searchboxcourses').style.height= "33px"; 
+document.getElementById('searchboxcourses').style.overflow= "hidden"; 
+document.getElementById('searchboxcourses').style.display="block";
+
+  
+                   document.getElementById('searchboxcourses').innerHTML= "<ul> <li style='color:red;'> "+this.responseText +"</li></ul>";  }
+              else { 
+console.log(this.responseText);
+
+
+var json_res = JSON.parse(this.responseText);
+//console.log(json_res);
+
+document.getElementById('searchboxcourses').innerHTML ="";
+for(var i =0;i<(json_res.length);i++)
+{
+
+console.log(json_res);
+
+
+document.getElementById('searchboxcourses').innerHTML += "<ul> <li> <a href="+json_res[i].link+">"+ json_res[i].name+"</a> </li></ul>";
+}
+document.getElementById('searchboxcourses').style.display= "block";
+ //document.getElementById("searchboxcourses").innerHTML += "<ul> <li> <a href="+this.responseText +">"+this.responseText +"</a></li></ul>";
+document.getElementById('searchboxcourses').style.height= "155px"; 
+document.getElementById('searchboxcourses').style.overflow= "scroll";
+                   
+
+                      }
+            //   var str_rsponse = this.responseText;
+              // var new_string = str_rsponse.trim();
+           
+}
+        
+            else  {   }
+        };
+
+        xmlhttp.open('GET', 'backend/searhcourses.php?courseval='+courseval, true);
+        xmlhttp.send();
+
+}
+
+
+
+
+
+
+function getcourse(val)
+{ 
+  var q =val;
+if(q.length >= 2)
+{
+
+ var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {  
+         
+                if(this.responseText == "No result found") 
+                { 
+removeDivSearch();
+document.getElementById('searchboxcourses').style.display= "block"; document.getElementById('searchboxcourses').style.height= "33px"; 
+document.getElementById('searchboxcourses').style.overflow= "hidden"; 
+
+document.getElementById('searchboxcourses').innerHTML= "<ul> <li> <a href='"+this.responseText +"'>"+this.responseText +"</a></li></ul>";  }
+              else { 
+
+var json_res = JSON.parse(this.responseText);
+//console.log(json_res);
+
+document.getElementById('searchboxcourses').innerHTML ="";
+for(var i =1;i<(json_res.length);i++)
+{
+
+console.log(json_res);
+//$('#searchboxcourses').html(json_res[i].link);
+
+//$('#searchboxcourses').html("<ul> <li> <a href="+json_res[i].link+">"+ json_res[i].name+"</a> </li></ul>");
+
+document.getElementById('searchboxcourses').innerHTML += "<ul> <li> <a href="+json_res[i].link+">"+ json_res[i].name+"</a> </li></ul>";
+}
+
+document.getElementById('searchboxcourses').style.display= "block"; document.getElementById('searchboxcourses').style.height= "155px"; 
+document.getElementById('searchboxcourses').style.overflow= "scroll";
+                   
+
+                      }
+            //   var str_rsponse = this.responseText;
+              // var new_string = str_rsponse.trim();
+           
+}
+        
+            else  {   }
+        };
+
+        xmlhttp.open('GET', 'backend/searhcourses.php?courseval='+q, true);
+        xmlhttp.send();
+
+
+
+} else { $('#searchboxcourses').html(""); document.getElementById('searchboxcourses').style.display= "none";  return false;   }
+        
+     
+}
+
+
+
+
